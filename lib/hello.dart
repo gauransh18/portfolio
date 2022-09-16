@@ -1,5 +1,6 @@
-import 'dart:html';
 
+
+//ignore: camel_case_types
 import 'package:flutter/material.dart';
 
 class hiText extends StatelessWidget {

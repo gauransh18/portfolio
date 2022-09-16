@@ -84,7 +84,7 @@ flutter:
         - asset: assets/fonts/Sage-webfont.ttf
     - family: LTCfamily
       fonts:
-        - asset: assets/fonts/LTC_Bodoni.ttf
+        - asset: assets/fonts/LTC-Bodoni.ttf
     - family: WorkSansFamily
       fonts:
         - asset: assets/fonts/WorkSans-regular.ttf

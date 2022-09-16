@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//ignore: camel_case_types
 class appBar_custom extends StatelessWidget {
   const appBar_custom({Key? key}) : super(key: key);
 

@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
              // [Colors.greenAccent, Colors.blueAccent],
              [Color.fromARGB(255, 255, 252, 75), Color.fromARGB(255, 255, 72, 72)],
 
-             
+
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
             ),
