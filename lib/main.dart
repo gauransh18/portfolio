@@ -2,10 +2,13 @@
 
 
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gaura/form.dart';
 import 'package:gaura/home.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+
+import 'routes.dart';
 
 
 
@@ -26,6 +29,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        formRoute: (context) => const FormScreen(),
+        homeRoute: (context) => const Home(),
+       
+      },
       debugShowCheckedModeBanner: false,
       title: "gaura",
       home: Scaffold(
@@ -56,18 +64,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-    
-    
-    
-    
-//     MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'hello',
-//       home:
-
-//           Home(),
-
-//     );
-//   }
-// }

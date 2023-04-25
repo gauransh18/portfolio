@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:gaura/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:marqueer/marqueer.dart';
-import 'package:http/http.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:neopop/neopop.dart';
@@ -27,12 +28,12 @@ class _HomeState extends State<Home> {
 
     Widget pdfPu(BuildContext context) {
       return AlertDialog(
-        title: const Text('Popup example'),
+        title: const Text('Resume Preview'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text("Hello"),
+            Text("Resume"),
           ],
         ),
         actions: <Widget>[
@@ -238,61 +239,39 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           Center(
-                            child: Container(
-                              width: 600,
-                              margin: EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 30),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: TextField(
-                                      style: GoogleFonts.gruppo(
-                                        textStyle: TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 255, 255, 255),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w400,
-                                          fontStyle: FontStyle.normal,
-                                          letterSpacing: 0.0,
-                                        ),
-                                      ),
-                                      decoration: InputDecoration(
-                                        hintText: 'Got a project? Let\'s talk!',
-                                        hintStyle: GoogleFonts.gruppo(
-                                          fontSize: 22,
-                                          color: Colors.white,
-                                        ),
-                                        filled: true,
-                                        fillColor:
-                                            Color.fromARGB(255, 42, 42, 42),
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        contentPadding: EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 20),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              child: NeoPopButton(
+                                color: Colors.white,
+                                onTapUp: () {
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      formRoute, (route) => false);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 20),
+                                  child: Text(
+                                    "Got a project? Let's talk!",
+                                    style: GoogleFonts.gruppo(
+                                      textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w400,
+                                        fontStyle: FontStyle.normal,
+                                        letterSpacing: 0.0,
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.send,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
+                          SizedBox(height: 20),
                           Center(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(width: 33,),
                                 Text(
                                   "I can ",
                                   style: GoogleFonts.abel(
