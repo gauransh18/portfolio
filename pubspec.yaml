@@ -39,7 +39,11 @@ dependencies:
   animated_text_kit: ^4.2.2
 
   marqueer: ^1.4.0
-  footer: ^0.0.4
+  http: ^0.13.5
+  url_launcher: ^6.0.17
+  flutter_advanced_drawer: ^1.3.4
+  neopop: ^1.0.2
+  flutter_animate: ^4.1.1+1
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +96,16 @@ flutter:
         - asset: assets/YujiBoku-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
+    - family: Arimo
+      fonts:
+        - asset: assets/Arimo-Regular.ttf
+        - asset: assets/Arimo-Bold.ttf
+        - asset: assets/Arimo-Italic.ttf
+        - asset: assets/Arimo-Medium.ttf
+        - asset: assets/Arimo-MediumItalic.ttf
+        - asset: assets/Arimo-SemiBold.ttf
+        - asset: assets/Arimo-SemiBOldItalic.ttf
 
   #
   # For details regarding fonts from package dependencies,

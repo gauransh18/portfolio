@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gaura/home.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 
 
@@ -24,12 +27,47 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'hello',
-      home:
-
-          Home(),
-
-
+      title: "gaura",
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: [
+            Center(
+                    child: Text(
+                                    "hi",
+                                    style:TextStyle(
+                                      fontFamily: "Arimo",
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 139,
+                                    ),
+                                  ).animate().fadeOut(
+                  duration: const Duration(seconds: 3),
+                ), // Fade out animation for the text
+            ),
+            Home(
+            ).animate().fadeIn(
+                  delay: const Duration(seconds: 2),
+                  duration: const Duration(seconds: 1),
+                ),
+          ],
+        ),
+      ),
     );
   }
 }
+
+    
+    
+    
+    
+//     MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'hello',
+//       home:
+
+//           Home(),
+
+//     );
+//   }
+// }
