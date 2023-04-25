@@ -528,7 +528,7 @@ SizedBox(height: 40),
                     ),
                   ),
                   SizedBox(
-                    height: (height - width > 200) ? height - width - 100 : 200,
+                    height: (height - width > 350) ? height - width : 350,
                   ),
                   Stack(
                     children: [
