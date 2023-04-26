@@ -888,87 +888,21 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.only(top: 16.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https(
-                            //             "linkedin.com", "/in/gauransh18"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(Uri.https(
-                            //           "linkedin.com", "/in/gauransh18"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "linkedin",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https("t.me", "/gauransh18"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(
-                            //           Uri.https("t.me", "/gauransh18"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "telegram",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
+                       Text("made with", style: GoogleFonts.abel(color: Colors.white, fontSize: 22)),
 
-                            TextButton(
-                              onPressed: () async {
-                                var urllaunchable = await canLaunchUrl(
-                                    Uri.https("github.com", "/gauransh18"));
-                                if (urllaunchable) {
-                                  await launchUrl(
-                                      Uri.https("github.com", "/gauransh18"));
-                                } else {
-                                  snack();
-                                }
-                              },
-                              child: Text(
-                                "github",
-                                style: GoogleFonts.abel(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                ),
-                              ),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 30,
                             ),
+                            SizedBox(width: 10),
+                            Text("by Gauransh Sharma", style: GoogleFonts.abel(color: Colors.white, fontSize: 22)),
+                            SizedBox(width: 10),
 
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https("instagram.com", "/gauransh18_"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(Uri.https(
-                            //           "intagram.com", "/gauransh18_"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "instagram",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
+                           
                           ],
                         ),
                       )
@@ -1069,9 +1003,9 @@ class _HomeState extends State<Home> {
 
                   onTapUp: () async {
                     var urllaunchable = await canLaunchUrl(
-                        Uri.https("instagram.com", "gauransh18"));
+                        Uri.https("instagram.com", "/gauransh18_"));
                     if (urllaunchable) {
-                      await launchUrl(Uri.https("instagram.co", "gauransh18"));
+                      await launchUrl(Uri.https("instagram.com", "/gauransh18_"));
                     } else {
                       snack();
                     }
@@ -1082,6 +1016,34 @@ class _HomeState extends State<Home> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("instagram",
+                            style: GoogleFonts.abel(
+                              color: Colors.white,
+                              fontSize: 22,
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+                NeoPopTiltedButton(
+                  //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
+                  //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
+                  color: Color.fromARGB(255, 101, 207, 104),
+
+                  onTapUp: () async {
+                    var urllaunchable = await canLaunchUrl(
+                        Uri.https("github.com", "/gauransh18"));
+                    if (urllaunchable) {
+                      await launchUrl(Uri.https("github.com", "/gauransh18"));
+                    } else {
+                      snack();
+                    }
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("github",
                             style: GoogleFonts.abel(
                               color: Colors.white,
                               fontSize: 22,

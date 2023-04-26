@@ -185,10 +185,10 @@ class _FormScreenState extends State<FormScreen> {
 
                     onTapUp: () async {
                       var urllaunchable = await canLaunchUrl(
-                          Uri.https("instagram.com", "gauransh18"));
+                          Uri.https("instagram.com", "/gauransh18_"));
                       if (urllaunchable) {
                         await launchUrl(
-                            Uri.https("instagram.co", "gauransh18"));
+                            Uri.https("instagram.com", "/gauransh18_"));
                       } else {
                         snack();
                       }
@@ -200,6 +200,35 @@ class _FormScreenState extends State<FormScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("instagram",
+                              style: GoogleFonts.abel(
+                                color: Colors.white,
+                                fontSize: 22,
+                              )),
+                        ],
+                      ),
+                    ),
+                  ),
+                  NeoPopTiltedButton(
+                    //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
+                    //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
+                    color: Color.fromARGB(255, 101, 207, 104),
+
+                    onTapUp: () async {
+                      var urllaunchable = await canLaunchUrl(
+                          Uri.https("github.com", "/gauransh18"));
+                      if (urllaunchable) {
+                        await launchUrl(Uri.https("github.com", "/gauransh18"));
+                      } else {
+                        snack();
+                      }
+                    },
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("github",
                               style: GoogleFonts.abel(
                                 color: Colors.white,
                                 fontSize: 22,
@@ -362,10 +391,9 @@ class _FormScreenState extends State<FormScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-
-SizedBox(height: 40),
+                        SizedBox(height: 40),
                         Container(
-                           width: (width - 100 > 500) ? 500 : width - 100,
+                          width: (width - 100 > 500) ? 500 : width - 100,
                           decoration: BoxDecoration(
                             color: Color.fromARGB(255, 17, 17, 17),
                             border: Border.all(
@@ -374,8 +402,7 @@ SizedBox(height: 40),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                8,8,8,0),
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                             child: TextFormField(
                               cursorColor: Colors.white,
                               style: GoogleFonts.gruppo(
@@ -408,18 +435,16 @@ SizedBox(height: 40),
                           height: 15,
                         ),
                         Container(
-
-                           width: (width - 100 > 500) ? 500 : width - 100,
+                          width: (width - 100 > 500) ? 500 : width - 100,
                           decoration: BoxDecoration(
-                           color: Color.fromARGB(255, 17, 17, 17),
+                            color: Color.fromARGB(255, 17, 17, 17),
                             border: Border.all(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                8,8,8,0),
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                             child: TextFormField(
                               cursorColor: Colors.white,
                               style: GoogleFonts.gruppo(
@@ -440,30 +465,28 @@ SizedBox(height: 40),
                                 ),
                               ),
                               validator: (email) {
-                            if (email == null || email.isEmpty) {
-                              return 'Required*';
-                            } else if (!EmailValidator.validate(email)) {
-                              return 'Please enter a valid Email';
-                            }
-                            return null;
-                          },
+                                if (email == null || email.isEmpty) {
+                                  return 'Required*';
+                                } else if (!EmailValidator.validate(email)) {
+                                  return 'Please enter a valid Email';
+                                }
+                                return null;
+                              },
                             ),
                           ),
                         ),
                         SizedBox(height: 15),
-                         Container(
+                        Container(
                           width: (width - 100 > 500) ? 500 : width - 100,
-
                           decoration: BoxDecoration(
-                            color:Color.fromARGB(255, 17, 17, 17),
+                            color: Color.fromARGB(255, 17, 17, 17),
                             border: Border.all(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                8,8,8,0),
+                            padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
                             child: TextFormField(
                               maxLines: 6,
                               cursorColor: Colors.white,
@@ -481,7 +504,7 @@ SizedBox(height: 40),
                                 hintText: 'message',
                                 hintStyle: GoogleFonts.gruppo(
                                   fontSize: 22,
-                                  color:  Color.fromARGB(255, 175, 175, 175),
+                                  color: Color.fromARGB(255, 175, 175, 175),
                                 ),
                               ),
                               validator: (value) {
@@ -494,7 +517,8 @@ SizedBox(height: 40),
                           ),
                         ),
                         SizedBox(height: 15),
-                        NeoPopButton(onTapUp: () async {
+                        NeoPopButton(
+                            onTapUp: () async {
                               if (_formKey.currentState!.validate()) {
                                 final response = await sendEmail(
                                     nameController.value.text,
@@ -514,21 +538,26 @@ SizedBox(height: 40),
                                 emailController.clear();
                                 messageController.clear();
                               }
-                            },child:Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child:
-                        Text("send",
-                            style: GoogleFonts.abel(
-                              color: Colors.black,
-                              fontSize: 22,
-                            )),
-
-                  ), color: Colors.white)
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              child: Text("send",
+                                  style: GoogleFonts.abel(
+                                    color: Colors.black,
+                                    fontSize: 22,
+                                  )),
+                            ),
+                            color: Colors.white)
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: (height - width > 350) ? height - width : 350,
+                    height: (height > width)
+                        ? ((height - width) * 20 > 500)
+                            ? 650
+                            : (height - width) * 20
+                        : 500,
                   ),
                   Stack(
                     children: [
@@ -545,87 +574,22 @@ SizedBox(height: 40),
                       Padding(
                         padding: const EdgeInsets.only(top: 16.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https(
-                            //             "linkedin.com", "/in/gauransh18"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(Uri.https(
-                            //           "linkedin.com", "/in/gauransh18"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "linkedin",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https("t.me", "/gauransh18"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(
-                            //           Uri.https("t.me", "/gauransh18"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "telegram",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
-
-                            TextButton(
-                              onPressed: () async {
-                                var urllaunchable = await canLaunchUrl(
-                                    Uri.https("github.com", "/gauransh18"));
-                                if (urllaunchable) {
-                                  await launchUrl(
-                                      Uri.https("github.com", "/gauransh18"));
-                                } else {
-                                  snack();
-                                }
-                              },
-                              child: Text(
-                                "github",
+                            Text("made with",
                                 style: GoogleFonts.abel(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                ),
-                              ),
+                                    color: Colors.white, fontSize: 22)),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                              size: 30,
                             ),
-
-                            // TextButton(
-                            //   onPressed: () async {
-                            //     var urllaunchable = await canLaunchUrl(
-                            //         Uri.https("instagram.com", "/gauransh18_"));
-                            //     if (urllaunchable) {
-                            //       await launchUrl(Uri.https(
-                            //           "intagram.com", "/gauransh18_"));
-                            //     } else {
-                            //       snack();
-                            //     }
-                            //   },
-                            //   child: Text(
-                            //     "instagram",
-                            //     style: GoogleFonts.abel(
-                            //       color: Colors.white,
-                            //       fontSize: 22,
-                            //     ),
-                            //   ),
-                            // ),
+                            SizedBox(width: 10),
+                            Text("by Gauransh Sharma",
+                                style: GoogleFonts.abel(
+                                    color: Colors.white, fontSize: 22)),
+                            SizedBox(width: 10),
                           ],
                         ),
                       )
