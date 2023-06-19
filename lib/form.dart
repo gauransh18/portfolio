@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
-
 import 'package:gaura/formID.dart';
 import 'package:gaura/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +9,6 @@ import 'package:http/http.dart' as http;
 import 'package:neopop/neopop.dart';
 import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
 class FormScreen extends StatefulWidget {
@@ -22,13 +19,17 @@ class FormScreen extends StatefulWidget {
 }
 
 class _FormScreenState extends State<FormScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final messageController = TextEditingController();
+
+  // late TextEditingController emailController;
+  // late TextEditingController nameController;
+  // late TextEditingController messageController;
+
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    final nameController = TextEditingController();
-    final emailController = TextEditingController();
-    final messageController = TextEditingController();
-
     Future sendEmail(String name, String email, String message) async {
       final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
       final response = await http.post(url,
@@ -50,28 +51,6 @@ class _FormScreenState extends State<FormScreen> {
 
     void _handleMenuButtonPressed() {
       advancedDrawerController.showDrawer();
-    }
-
-    Widget pdfPu(BuildContext context) {
-      return AlertDialog(
-        title: const Text('Resume Preview'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text("Resume"),
-          ],
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            // textColor: Theme.of(context).primaryColor,
-            child: const Text('Close'),
-          ),
-        ],
-      );
     }
 
     final height = MediaQuery.of(context).size.height;
@@ -115,14 +94,15 @@ class _FormScreenState extends State<FormScreen> {
                     //   shape: BoxShape.circle,
                     // ),
                     child: Image.asset(
-                      '/Users/gauransh/FlutterDev/gaura/assets/imposter.gif',
+                      'assets/imposter.gif',
                       fit: BoxFit.fitHeight,
                     ),
                   ),
-                  NeoPopTiltedButton(
+                  SizedBox(height: 15),
+                  NeoPopButton(
                     //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                     //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                    color: Colors.blueAccent,
+                    color: Color.fromARGB(255, 255, 255, 255),
 
                     onTapUp: () async {
                       var urllaunchable = await canLaunchUrl(
@@ -142,17 +122,18 @@ class _FormScreenState extends State<FormScreen> {
                         children: [
                           Text("linkedin",
                               style: GoogleFonts.abel(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 22,
                               )),
                         ],
                       ),
                     ),
                   ),
-                  NeoPopTiltedButton(
+                  SizedBox(height: 15),
+                  NeoPopButton(
                     //   bottomShadowColor: Colors.orange,
                     // rightShadowColor: Color.fromARGB(255, 67, 248, 146),
-                    color: Colors.amber,
+                    color: Color.fromARGB(255, 255, 255, 255),
 
                     onTapUp: () async {
                       var urllaunchable =
@@ -171,17 +152,18 @@ class _FormScreenState extends State<FormScreen> {
                         children: [
                           Text("telegram",
                               style: GoogleFonts.abel(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 22,
                               )),
                         ],
                       ),
                     ),
                   ),
-                  NeoPopTiltedButton(
+                  SizedBox(height: 15),
+                  NeoPopButton(
                     //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                     //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                    color: Color.fromARGB(255, 238, 87, 138),
+                    color: Color.fromARGB(255, 255, 255, 255),
 
                     onTapUp: () async {
                       var urllaunchable = await canLaunchUrl(
@@ -201,17 +183,18 @@ class _FormScreenState extends State<FormScreen> {
                         children: [
                           Text("instagram",
                               style: GoogleFonts.abel(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 22,
                               )),
                         ],
                       ),
                     ),
                   ),
-                  NeoPopTiltedButton(
+                  SizedBox(height: 15),
+                  NeoPopButton(
                     //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                     //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                    color: Color.fromARGB(255, 101, 207, 104),
+                    color: Color.fromARGB(255, 255, 255, 255),
 
                     onTapUp: () async {
                       var urllaunchable = await canLaunchUrl(
@@ -230,7 +213,7 @@ class _FormScreenState extends State<FormScreen> {
                         children: [
                           Text("github",
                               style: GoogleFonts.abel(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 22,
                               )),
                         ],
@@ -303,16 +286,17 @@ class _FormScreenState extends State<FormScreen> {
               Row(
                 children: [
                   TextButton.icon(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => pdfPu(context),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Abhi resume nhi dala'),
-                        ),
-                      );
+                    onPressed: () async {
+                      //https:drive.google.com/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view
+                      var urllaunchable = await canLaunchUrl(Uri.https(
+                          "drive.google.com",
+                          "/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view"));
+                      if (urllaunchable) {
+                        await launchUrl(Uri.https("drive.google.com",
+                            "/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view"));
+                      } else {
+                        snack();
+                      }
                     },
                     label: Text(
                       "Resume",
@@ -329,12 +313,15 @@ class _FormScreenState extends State<FormScreen> {
                     icon: Icon(Icons.note, color: Colors.white),
                   ),
                   TextButton.icon(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Abhi art page connect nhi kara'),
-                        ),
-                      );
+                    onPressed: () async {
+                      var urllaunchable = await canLaunchUrl(
+                          Uri.https("dribbble.com", "/gauransh18"));
+                      if (urllaunchable) {
+                        await launchUrl(
+                            Uri.https("dribbble.com", "/gauransh18"));
+                      } else {
+                        snack();
+                      }
                     },
                     label: Text(
                       "  art\nwork",
@@ -466,7 +453,7 @@ class _FormScreenState extends State<FormScreen> {
                               ),
                               validator: (email) {
                                 if (email == null || email.isEmpty) {
-                                  return 'Required*';
+                                  return '*Required';
                                 } else if (!EmailValidator.validate(email)) {
                                   return 'Please enter a valid Email';
                                 }
@@ -548,6 +535,8 @@ class _FormScreenState extends State<FormScreen> {
                                     fontSize: 22,
                                   )),
                             ),
+                            rightShadowColor: Colors.amber,
+                            bottomShadowColor: Colors.amber,
                             color: Colors.white)
                       ],
                     ),
@@ -566,9 +555,8 @@ class _FormScreenState extends State<FormScreen> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                              fit: BoxFit.fitWidth,
-                              image: AssetImage(
-                                  '/Users/gauransh/FlutterDev/gaura/assets/gaura.png')),
+                              fit: BoxFit.contain,
+                              image: AssetImage('assets/gaura.png')),
                         ),
                       ),
                       Padding(

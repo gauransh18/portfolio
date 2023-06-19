@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:marqueer/marqueer.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:neopop/neopop.dart';
@@ -24,28 +23,6 @@ class _HomeState extends State<Home> {
 
     void _handleMenuButtonPressed() {
       advancedDrawerController.showDrawer();
-    }
-
-    Widget pdfPu(BuildContext context) {
-      return AlertDialog(
-        title: const Text('Resume Preview'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text("Resume"),
-          ],
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            // textColor: Theme.of(context).primaryColor,
-            child: const Text('Close'),
-          ),
-        ],
-      );
     }
 
     final height = MediaQuery.of(context).size.height;
@@ -108,16 +85,17 @@ class _HomeState extends State<Home> {
             Row(
               children: [
                 TextButton.icon(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => pdfPu(context),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Abhi resume nhi dala'),
-                      ),
-                    );
+                  onPressed: () async {
+                    //https:drive.google.com/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view
+                    var urllaunchable = await canLaunchUrl(Uri.https(
+                        "drive.google.com",
+                        "/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view"));
+                    if (urllaunchable) {
+                      await launchUrl(Uri.https("drive.google.com",
+                          "/file/d/1mnGfj3YdlLaq9IaSDM7RxcGhWxHkR3jH/view"));
+                    } else {
+                      snack();
+                    }
                   },
                   label: Text(
                     "Resume",
@@ -134,12 +112,15 @@ class _HomeState extends State<Home> {
                   icon: Icon(Icons.note, color: Colors.white),
                 ),
                 TextButton.icon(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Abhi art page connect nhi kara'),
-                      ),
-                    );
+                  onPressed: () async {
+                    //https://readymag.com/gauransh18/4239311/
+                    var urllaunchable = await canLaunchUrl(
+                        Uri.https("dribbble.com", "/gauransh18"));
+                    if (urllaunchable) {
+                      await launchUrl(Uri.https("dribbble.com", "/gauransh18"));
+                    } else {
+                      snack();
+                    }
                   },
                   label: Text(
                     "  art\nwork",
@@ -211,7 +192,7 @@ class _HomeState extends State<Home> {
                                 style: GoogleFonts.openSans(
                                   textStyle: TextStyle(
                                     color: Color.fromARGB(255, 255, 255, 255),
-                                    fontSize: 110,
+                                    fontSize: 80,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.normal,
                                     letterSpacing: 0.0,
@@ -243,6 +224,9 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: NeoPopButton(
                                 color: Colors.white,
+                                rightShadowColor:
+                                    Color.fromARGB(255, 135, 163, 177),
+                                bottomShadowColor: Colors.blueGrey,
                                 onTapUp: () {
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                       formRoute, (route) => false);
@@ -271,7 +255,9 @@ class _HomeState extends State<Home> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(width: 33,),
+                                SizedBox(
+                                  width: 33,
+                                ),
                                 Text(
                                   "I can ",
                                   style: GoogleFonts.abel(
@@ -403,7 +389,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/premiere.png",
+                                        "assets/premiere.png",
                                       ),
                                     )),
                                 Padding(
@@ -435,7 +421,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/illustrator.png",
+                                        "assets/illustrator.png",
                                       ),
                                     )),
                                 Padding(
@@ -467,7 +453,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/git.png",
+                                        'assets/git.png',
                                       ),
                                     )),
                                 Padding(
@@ -499,7 +485,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/flutter.png",
+                                        "assets/flutter.png",
                                       ),
                                     )),
                                 Padding(
@@ -531,7 +517,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/dart.png",
+                                        "assets/dart.png",
                                       ),
                                     )),
                                 Padding(
@@ -578,7 +564,7 @@ class _HomeState extends State<Home> {
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 14, 0, 8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/python.png",
+                                        "assets/python.png",
                                       ),
                                     )),
                                 Padding(
@@ -610,7 +596,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/procreate.png",
+                                        "assets/procreate.png",
                                       ),
                                     )),
                                 Padding(
@@ -642,7 +628,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/photoshop.png",
+                                        "assets/photoshop.png",
                                       ),
                                     )),
                                 Padding(
@@ -674,7 +660,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/canva.png",
+                                        "assets/canva.png",
                                       ),
                                     )),
                                 Padding(
@@ -707,7 +693,7 @@ class _HomeState extends State<Home> {
                                       padding: const EdgeInsets.fromLTRB(
                                           8, 10, 8, 10),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/figma.png",
+                                        "assets/figma.png",
                                       ),
                                     )),
                                 Padding(
@@ -753,7 +739,7 @@ class _HomeState extends State<Home> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(8),
                                         child: Image.asset(
-                                          "/Users/gauransh/FlutterDev/gaura/assets/logo/vectornator.png",
+                                          "assets/vectornator.png",
                                           fit: BoxFit.contain,
                                         ),
                                       )),
@@ -785,7 +771,7 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/sql.png",
+                                        "assets/sql.png",
                                       ),
                                     )),
                                 Padding(
@@ -817,7 +803,8 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/cpp.png",
+                                        "assets/cpp.png",
+                                        fit: BoxFit.contain,
                                       ),
                                     )),
                                 Padding(
@@ -849,7 +836,8 @@ class _HomeState extends State<Home> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8),
                                       child: Image.asset(
-                                        "/Users/gauransh/FlutterDev/gaura/assets/logo/java.png",
+                                        "assets/java.png",
+                                        fit: BoxFit.contain,
                                       ),
                                     )),
                                 Padding(
@@ -880,9 +868,8 @@ class _HomeState extends State<Home> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                              fit: BoxFit.fitWidth,
-                              image: AssetImage(
-                                  '/Users/gauransh/FlutterDev/gaura/assets/gaura.png')),
+                              fit: BoxFit.contain,
+                              image: AssetImage('assets/gaura.png')),
                         ),
                       ),
                       Padding(
@@ -890,8 +877,9 @@ class _HomeState extends State<Home> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                       Text("made with", style: GoogleFonts.abel(color: Colors.white, fontSize: 22)),
-
+                            Text("made with",
+                                style: GoogleFonts.abel(
+                                    color: Colors.white, fontSize: 22)),
                             SizedBox(width: 10),
                             Icon(
                               Icons.favorite,
@@ -899,10 +887,10 @@ class _HomeState extends State<Home> {
                               size: 30,
                             ),
                             SizedBox(width: 10),
-                            Text("by Gauransh Sharma", style: GoogleFonts.abel(color: Colors.white, fontSize: 22)),
+                            Text("by Gauransh Sharma",
+                                style: GoogleFonts.abel(
+                                    color: Colors.white, fontSize: 22)),
                             SizedBox(width: 10),
-
-                           
                           ],
                         ),
                       )
@@ -935,14 +923,14 @@ class _HomeState extends State<Home> {
                   //   shape: BoxShape.circle,
                   // ),
                   child: Image.asset(
-                    '/Users/gauransh/FlutterDev/gaura/assets/imposter.gif',
+                    'assets/imposter.gif',
                     fit: BoxFit.fitHeight,
                   ),
                 ),
-                NeoPopTiltedButton(
+                NeoPopButton(
                   //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                   //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                  color: Colors.blueAccent,
+                  color: Color.fromARGB(255, 255, 255, 255),
 
                   onTapUp: () async {
                     var urllaunchable = await canLaunchUrl(
@@ -961,17 +949,18 @@ class _HomeState extends State<Home> {
                       children: [
                         Text("linkedin",
                             style: GoogleFonts.abel(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 22,
                             )),
                       ],
                     ),
                   ),
                 ),
-                NeoPopTiltedButton(
+                SizedBox(height: 15),
+                NeoPopButton(
                   //   bottomShadowColor: Colors.orange,
                   // rightShadowColor: Color.fromARGB(255, 67, 248, 146),
-                  color: Colors.amber,
+                  color: Color.fromARGB(255, 255, 255, 255),
 
                   onTapUp: () async {
                     var urllaunchable =
@@ -989,23 +978,25 @@ class _HomeState extends State<Home> {
                       children: [
                         Text("telegram",
                             style: GoogleFonts.abel(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 22,
                             )),
                       ],
                     ),
                   ),
                 ),
-                NeoPopTiltedButton(
+                SizedBox(height: 15),
+                NeoPopButton(
                   //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                   //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                  color: Color.fromARGB(255, 238, 87, 138),
+                  color: Color.fromARGB(255, 255, 255, 255),
 
                   onTapUp: () async {
                     var urllaunchable = await canLaunchUrl(
                         Uri.https("instagram.com", "/gauransh18_"));
                     if (urllaunchable) {
-                      await launchUrl(Uri.https("instagram.com", "/gauransh18_"));
+                      await launchUrl(
+                          Uri.https("instagram.com", "/gauransh18_"));
                     } else {
                       snack();
                     }
@@ -1017,17 +1008,18 @@ class _HomeState extends State<Home> {
                       children: [
                         Text("instagram",
                             style: GoogleFonts.abel(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 22,
                             )),
                       ],
                     ),
                   ),
                 ),
-                NeoPopTiltedButton(
+                SizedBox(height: 15),
+                NeoPopButton(
                   //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
                   //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
-                  color: Color.fromARGB(255, 101, 207, 104),
+                  color: Color.fromARGB(255, 255, 255, 255),
 
                   onTapUp: () async {
                     var urllaunchable = await canLaunchUrl(
@@ -1045,7 +1037,7 @@ class _HomeState extends State<Home> {
                       children: [
                         Text("github",
                             style: GoogleFonts.abel(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 12, 12, 12),
                               fontSize: 22,
                             )),
                       ],
