@@ -206,7 +206,8 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
                             child: Center(
                               child: Text(
-                                'flutter developer and designer',
+                                textAlign: TextAlign.center,
+                                '   creative developer ',
                                 style: GoogleFonts.abel(
                                   textStyle: TextStyle(
                                     color: Color.fromARGB(255, 255, 255, 255),
@@ -228,8 +229,8 @@ class _HomeState extends State<Home> {
                                     Color.fromARGB(255, 135, 163, 177),
                                 bottomShadowColor: Colors.blueGrey,
                                 onTapUp: () {
-                                  Navigator.of(context).pushNamedAndRemoveUntil(
-                                      formRoute, (route) => false);
+                                  Navigator.of(context).pushNamed(
+                                      formRoute);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(

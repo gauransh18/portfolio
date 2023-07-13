@@ -242,21 +242,6 @@ class _FormScreenState extends State<FormScreen> {
         ),
         child: Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              onPressed: _handleMenuButtonPressed,
-              icon: ValueListenableBuilder<AdvancedDrawerValue>(
-                valueListenable: advancedDrawerController,
-                builder: (_, value, __) {
-                  return AnimatedSwitcher(
-                    duration: Duration(seconds: 1),
-                    child: Icon(
-                      value.visible ? Icons.clear : Icons.menu,
-                      key: ValueKey<bool>(value.visible),
-                    ),
-                  );
-                },
-              ),
-            ),
             title: TextButton(
               onPressed: () {
                 Navigator.of(context)
