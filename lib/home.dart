@@ -86,13 +86,13 @@ class _HomeState extends State<Home> {
               children: [
                 TextButton.icon(
                   onPressed: () async {
-                    //https:drive.google.com/file/d/1AQSg7QMqjGE2c2u9BA2RUwqALm6WpVsU/view
+                    //https:drive.google.com/file/d/1X3FloiMFWq1xbpComLbYuhhpC1-4OBkT/view
                     var urllaunchable = await canLaunchUrl(Uri.https(
                         "drive.google.com",
-                        "/file/d/1AQSg7QMqjGE2c2u9BA2RUwqALm6WpVsU/view"));
+                        "/file/d/1X3FloiMFWq1xbpComLbYuhhpC1-4OBkT/view"));
                     if (urllaunchable) {
                       await launchUrl(Uri.https("drive.google.com",
-                          "/file/d/1AQSg7QMqjGE2c2u9BA2RUwqALm6WpVsU/view"));
+                          "/file/d/1X3FloiMFWq1xbpComLbYuhhpC1-4OBkT/view"));
                     } else {
                       snack();
                     }
@@ -1044,6 +1044,36 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+                SizedBox(height: 15),
+                  NeoPopButton(
+                    //bottomShadowColor: Color.fromARGB(255, 225, 225, 225),
+                    //rightShadowColor: Color.fromARGB(255, 255, 255, 255),
+                    color: Color.fromARGB(255, 255, 255, 255),
+
+                    onTapUp: () async {
+                      var urllaunchable = await canLaunchUrl(
+                          Uri.https("twitter.com", "/gauransh18"));
+                      if (urllaunchable) {
+                        await launchUrl(Uri.https("twitter.com", "/gauransh18_"));
+                      } else {
+                        snack();
+                      }
+                    },
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("twitter",
+                              style: GoogleFonts.abel(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 22,
+                              )),
+                        ],
+                      ),
+                    ),
+                  ),
                 // SizedBox(
                 //   height: height-444,
                 // ),
